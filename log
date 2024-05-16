@@ -2,3 +2,18 @@ Thu 16 May 2024 02:25:05 AM UTC:
  tests:  0|5
 total_score: 0/70
 48deaaf
+Thu 16 May 2024 03:04:30 AM UTC: 
+ sudoku.c | 47 +++++++++++++++++++++++++++++++++++------------
+ 1 file changed, 35 insertions(+), 12 deletions(-)
+In file included from test.c:5:
+sudoku.c: In function ‘is_valid’:
+sudoku.c:57:7: error: unused variable ‘auxSudo’ [-Werror=unused-variable]
+   57 |   int auxSudo = n->sudo[0][0];
+      |       ^~~~~~~
+sudoku.c: In function ‘get_adj_nodes’:
+sudoku.c:80:15: error: unused variable ‘newN’ [-Werror=unused-variable]
+   80 |         Node *newN = copy(n);
+      |               ^~~~
+cc1: all warnings being treated as errors
+Compilation failed
+53fdc39
