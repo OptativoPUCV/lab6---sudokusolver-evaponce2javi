@@ -47,11 +47,9 @@ int is_valid(Node *n) {
   int fila[9][10] = {0};
   int columna[9][10] = {0};
   int submatriz[9][10] = {0};
-
   for (int i = 0; i < 9; i++) {
     for (int k = 0; k < 9; k++) {
       int numero = n->sudo[i][k];
-
       if (numero != 0) {
         int col = (i / 3);
         int fil = (k / 3);
@@ -73,11 +71,21 @@ int is_valid(Node *n) {
 
 List *get_adj_nodes(Node *n) {
   List *list = createList();
+  int vacio = 0; // si encontramos, 0 vacia 1 que no
   for (int i = 0; i < 9; i++) {
-    for (int k = 0; k < 9; k++) {
-      if (n->sudo[i][k] == 0) // vacio kuak
-      {
-        return list;
+    for (int k = 0; k < 9; k++) { // Recorridoo
+      if (n->sudo[i][k] == 0) {   // hallamos vacia
+        for (int j = 0; j < 9; k++) {
+          Node *newN = copy(n);
+          if (newN != NULL) {
+            newN->sudo[i][k] = j;
+            if (is_valid(newN))
+              pushBack(list, newN);
+            else
+              return NULL;
+          }
+        }
+        vacio = 1;
       }
     }
   }

@@ -149,3 +149,14 @@ Thu 16 May 2024 03:34:08 AM UTC:
  tests:  3|4
 total_score: 20/70
 08bb1cd
+Thu 16 May 2024 03:43:52 AM UTC: 
+ sudoku.c | 18 ++++++++++++++----
+ 1 file changed, 14 insertions(+), 4 deletions(-)
+In file included from test.c:5:
+sudoku.c: In function ‘get_adj_nodes’:
+sudoku.c:74:7: error: variable ‘vacio’ set but not used [-Werror=unused-but-set-variable]
+   74 |   int vacio = 0; // si encontramos, 0 vacia 1 que no
+      |       ^~~~~
+cc1: all warnings being treated as errors
+Compilation failed
+e14f30b
