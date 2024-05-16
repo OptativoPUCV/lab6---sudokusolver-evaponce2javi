@@ -160,3 +160,8 @@ sudoku.c:74:7: error: variable ‘vacio’ set but not used [-Werror=unused-but-
 cc1: all warnings being treated as errors
 Compilation failed
 e14f30b
+Thu 16 May 2024 03:45:11 AM UTC: 
+ sudoku.c | 4 ++--
+ 1 file changed, 2 insertions(+), 2 deletions(-)
+ tests:  0|0
+724bd5d

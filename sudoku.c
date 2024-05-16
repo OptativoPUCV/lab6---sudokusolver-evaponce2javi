@@ -71,7 +71,7 @@ int is_valid(Node *n) {
 
 List *get_adj_nodes(Node *n) {
   List *list = createList();
-  int vacio = 0; // si encontramos, 0 vacia 1 que no
+  // int vacio = 0; // si encontramos, 0 vacia 1 que no
   for (int i = 0; i < 9; i++) {
     for (int k = 0; k < 9; k++) { // Recorridoo
       if (n->sudo[i][k] == 0) {   // hallamos vacia
@@ -85,7 +85,7 @@ List *get_adj_nodes(Node *n) {
               return NULL;
           }
         }
-        vacio = 1;
+        // vacio = 1;
       }
     }
   }
