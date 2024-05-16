@@ -72,7 +72,7 @@ int is_valid(Node *n) {
         columna[i][numero]++;
         if (submatriz[i][numero] != 0)
           return 0;
-        submatriz[i][numero]++;
+        submatriz[subInd][numero]++;
       }
       return 1;
     }
