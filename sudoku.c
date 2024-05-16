@@ -43,11 +43,10 @@ void print_node(Node *n) {
 }
 
 int is_valid(Node *n) {
-  // ir de a poco
-  // conteo de cada casilla
-  int fila[9][9] = {0};
-  int columna[9][9] = {0};
-  int submatriz[9][9] = {0};
+  // por indexacion
+  int fila[9][10] = {0};
+  int columna[9][10] = {0};
+  int submatriz[9][10] = {0};
 
   for (int i = 0; i < 9; i++) {
     for (int k = 0; k < 9; k++) {
