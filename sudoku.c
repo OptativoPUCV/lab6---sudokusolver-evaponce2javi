@@ -42,29 +42,17 @@ void print_node(Node *n) {
   printf("\n");
 }
 
-int recorrerMatriz(Node *n, int a, int b) {
-  int auxSudo = n->sudo[a][b];
-  for (int i = 0; i < 9; i++) {
-    for (int k = 0; k < 9; k++) {
-      if (n->sudo[i][k] == auxSudo)
-        return 0;
-    }
-  }
-  return 1;
-}
-
 int is_valid(Node *n) {
-  // int auxSudo = n->sudo[0][0];
-  /*
- No se repitan números en las filas
- No se repitan números en las columnas
- No se repitan números en las submatrices de 3x3
- // If numero is in sitio, return cero
- // if no está, return 1
- */
+  // ir de a poco
+  int fila[9][9] = {};
+  int columna[9][9] = {};
+  int submatriz[9][9] = {};
+
   for (int i = 0; i < 9; i++) {
     for (int k = 0; k < 9; k++) {
-      if (recorrerMatriz(n, i, k) == 0)
+      int numero = n->sudo[i][k];
+
+      if (n == 0)
         return 0;
     }
   }
