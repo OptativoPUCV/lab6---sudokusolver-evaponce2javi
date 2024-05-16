@@ -74,35 +74,37 @@ int is_valid(Node *n) {
           return 0;
         submatriz[subInd][numero]++;
       }
-      return 1;
     }
+  }
+  return 1;
+}
 
-    List *get_adj_nodes(Node * n) {
-      List *list = createList();
-      for (int i = 0; i < 9; i++) {
-        for (int k = 0; k < 9; k++) {
-          if (n->sudo[i][k] == 0) // vacio kuak
-          {
-            return list;
-          }
-        }
+List *get_adj_nodes(Node *n) {
+  List *list = createList();
+  for (int i = 0; i < 9; i++) {
+    for (int k = 0; k < 9; k++) {
+      if (n->sudo[i][k] == 0) // vacio kuak
+      {
+        return list;
       }
-      return list;
     }
+  }
+  return list;
+}
 
-    int is_final(Node * n) { return 0; }
+int is_final(Node *n) { return 0; }
 
-    Node *DFS(Node * initial, int *cont) { return NULL; }
+Node *DFS(Node *initial, int *cont) { return NULL; }
 
-  /*
-  int main( int argc, char *argv[] ){
+/*
+int main( int argc, char *argv[] ){
 
-    Node* initial= read_file("s12a.txt");;
+  Node* initial= read_file("s12a.txt");;
 
-    int cont=0;
-    Node* final = DFS(initial, &cont);
-    printf("iterations:%d\n",cont);
-    print_node(final);
+  int cont=0;
+  Node* final = DFS(initial, &cont);
+  printf("iterations:%d\n",cont);
+  print_node(final);
 
-    return 0;
-  }*/
+  return 0;
+}*/
