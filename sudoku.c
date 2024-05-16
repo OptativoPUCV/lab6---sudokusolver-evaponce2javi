@@ -54,22 +54,15 @@ int is_valid(Node *n) {
       int numero = n->sudo[i][k];
 
       if (numero != 0) {
-        // si va de 0 a 3, 3 a 6, 6 a 9
-        // lo mismo abajo, asi que tendria
-        // que hacer una operacion para
-        // determinarlo
         int col = (i / 3);
         int fil = (i / 3);
         int subInd = col * 3 + fil;
-        // con ruteo deberia multiplicar
         if (fila[i][numero] != 0)
           return 0;
-
         fila[i][numero]++;
         if (columna[i][numero] != 0)
           return 0;
-
-        columna[i][numero]++;
+        columna[k][numero]++;
         if (submatriz[i][numero] != 0)
           return 0;
         submatriz[subInd][numero]++;
