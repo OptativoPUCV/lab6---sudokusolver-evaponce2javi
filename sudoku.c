@@ -75,7 +75,7 @@ List *get_adj_nodes(Node *n) {
   for (int i = 0; i < 9 && !vacio; i++) {
     for (int k = 0; k < 9 && !vacio; k++) { // Recorridoo
       if (n->sudo[i][k] == 0) {             // hallamos vacia
-        for (int j = 0; j < 9; j++) {
+        for (int j = 0; j <= 9; j++) {
           Node *newN = copy(n);
           if (newN != NULL) {
             newN->sudo[i][k] = j;
