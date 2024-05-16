@@ -82,7 +82,10 @@ List *get_adj_nodes(Node *n) {
             if (is_valid(newN))
               pushBack(list, newN);
             else
-              return NULL;
+              free(newN);
+          } else {
+            clean(list);
+            return NULL;
           }
         }
         vacio = 1;
