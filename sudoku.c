@@ -44,47 +44,65 @@ void print_node(Node *n) {
 
 int is_valid(Node *n) {
   // ir de a poco
-  // int fila[9][9] = {};
-  // int columna[9][9] = {};
-  // int submatriz[9][9] = {};
+  // conteo de cada casilla
+  int fila[9][9] = {0};
+  int columna[9][9] = {0};
+  int submatriz[9][9] = {0};
 
   for (int i = 0; i < 9; i++) {
     for (int k = 0; k < 9; k++) {
-      // int numero = n->sudo[i][k];
+      int numero = n->sudo[i][k];
 
-      if (n == 0)
-        return 0;
-    }
-  }
-  return 1;
-}
+      if (numero != 0) {
+        // si va de 0 a 3, 3 a 6, 6 a 9
+        // lo mismo abajo, asi que tendria
+        // que hacer una operacion para
+        // determinarlo
+        int col = (i / 3);
+        int fil = (i / 3);
+        int subInd = col * 3 + fil;
+        // con ruteo deberia multiplicar
+        if (fila[i][numero] != 0)
+          return 0;
 
-List *get_adj_nodes(Node *n) {
-  List *list = createList();
-  for (int i = 0; i < 9; i++) {
-    for (int k = 0; k < 9; k++) {
-      if (n->sudo[i][k] == 0) // vacio kuak
-      {
-        return list;
+        fila[i][numero]++;
+        if (columna[i][numero] != 0)
+          return 0;
+
+        columna[i][numero]++;
+        if (submatriz[i][numero] != 0)
+          return 0;
+        submatriz[i][numero]++;
       }
+      return 1;
     }
-  }
-  return list;
-}
 
-int is_final(Node *n) { return 0; }
+    List *get_adj_nodes(Node * n) {
+      List *list = createList();
+      for (int i = 0; i < 9; i++) {
+        for (int k = 0; k < 9; k++) {
+          if (n->sudo[i][k] == 0) // vacio kuak
+          {
+            return list;
+          }
+        }
+      }
+      return list;
+    }
 
-Node *DFS(Node *initial, int *cont) { return NULL; }
+    int is_final(Node * n) { return 0; }
 
-/*
-int main( int argc, char *argv[] ){
+    Node *DFS(Node * initial, int *cont) { return NULL; }
 
-  Node* initial= read_file("s12a.txt");;
+  /*
+  int main( int argc, char *argv[] ){
 
-  int cont=0;
-  Node* final = DFS(initial, &cont);
-  printf("iterations:%d\n",cont);
-  print_node(final);
+    Node* initial= read_file("s12a.txt");;
 
-  return 0;
-}*/
+    int cont=0;
+    Node* final = DFS(initial, &cont);
+    printf("iterations:%d\n",cont);
+    print_node(final);
+
+    return 0;
+  }*/
