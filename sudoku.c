@@ -54,7 +54,7 @@ int recorrerMatriz(Node *n, int a, int b) {
 }
 
 int is_valid(Node *n) {
-  int auxSudo = n->sudo[0][0];
+  // int auxSudo = n->sudo[0][0];
   /*
  No se repitan números en las filas
  No se repitan números en las columnas
