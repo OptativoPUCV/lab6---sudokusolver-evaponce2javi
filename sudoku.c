@@ -55,7 +55,7 @@ int is_valid(Node *n) {
 
       if (numero != 0) {
         int col = (i / 3);
-        int fil = (i / 3);
+        int fil = (k / 3);
         int subInd = col * 3 + fil;
         if (fila[i][numero] != 0)
           return 0;
