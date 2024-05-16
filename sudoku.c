@@ -60,10 +60,10 @@ int is_valid(Node *n) {
         if (fila[i][numero] != 0)
           return 0;
         fila[i][numero]++;
-        if (columna[i][numero] != 0)
+        if (columna[k][numero] != 0)
           return 0;
         columna[k][numero]++;
-        if (submatriz[i][numero] != 0)
+        if (submatriz[subInd][numero] != 0)
           return 0;
         submatriz[subInd][numero]++;
       }
