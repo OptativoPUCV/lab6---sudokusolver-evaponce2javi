@@ -77,7 +77,7 @@ List *get_adj_nodes(Node *n) {
     for (int k = 0; k < 9; k++) {
       if (n->sudo[i][k] == 0) // vacio kuak
       {
-        Node *newN = copy(n);
+        return list;
       }
     }
   }

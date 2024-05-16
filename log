@@ -17,3 +17,14 @@ sudoku.c:80:15: error: unused variable ‘newN’ [-Werror=unused-variable]
 cc1: all warnings being treated as errors
 Compilation failed
 53fdc39
+Thu 16 May 2024 03:04:50 AM UTC: 
+ sudoku.c | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+In file included from test.c:5:
+sudoku.c: In function ‘is_valid’:
+sudoku.c:57:7: error: unused variable ‘auxSudo’ [-Werror=unused-variable]
+   57 |   int auxSudo = n->sudo[0][0];
+      |       ^~~~~~~
+cc1: all warnings being treated as errors
+Compilation failed
+b45c0ee
