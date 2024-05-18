@@ -122,20 +122,9 @@ int is_final(Node *n) {
 }
 
 Node *DFS(Node *initial, int *cont) {
-
-  // Cree un stack S (pila) e inserte el nodo.
   Stack *S = createStack();
-
-  /*
-  Operaciones en list.c para stack:
-  Stack* createStack();
-  void pop(Stack* s);
-  void* top(Stack* s);
-  void push(Stack* s, void* data);
-  */
   push(S, initial);
 
-  // Mientras el stack S no se encuentre vacío:
   while (!is_empty(S)) {
     (*cont)++;
     // a) Saque y elimine el primer nodo de S.
@@ -145,15 +134,17 @@ Node *DFS(Node *initial, int *cont) {
 
     // b) Verifique si corresponde a un estado final, si es así retorne el nodo.
     if (is_final(nodo)) {
+      free(S);
       return nodo;
     }
+
     // c) Obtenga la lista de nodos adyacentes al nodo.
     List *list = get_adj_nodes(nodo);
 
     // d) Agregue los nodos de la lista (uno por uno) al stack S.
     Node *adjNode;
-    while (list != NULL) {
-      adjNode = first(list);
+    while (!is_empty(list)) {
+      adjNode = (Node *)first(list);
       popFront(list);
       push(S, adjNode);
       // void push(Stack* s, void* data);
