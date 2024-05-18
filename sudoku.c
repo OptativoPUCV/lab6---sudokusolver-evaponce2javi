@@ -128,29 +128,34 @@ Node *DFS(Node *initial, int *cont) {
   while (!is_empty(S)) {
     (*cont)++;
     // a) Saque y elimine el primer nodo de S.
-    Node *nodo = first(S);
+    Node *nodo = top(S);
     pop(S);
     // void pop(Stack* s);
 
     // b) Verifique si corresponde a un estado final, si es así retorne el nodo.
     if (is_final(nodo)) {
-      free(S);
+      // free(S);
       return nodo;
     }
 
     // c) Obtenga la lista de nodos adyacentes al nodo.
     List *list = get_adj_nodes(nodo);
 
+    /*if (list != NULL){
+      free(nodo);
+    }*/
+
     // d) Agregue los nodos de la lista (uno por uno) al stack S.
     Node *adjNode;
     while (!is_empty(list)) {
       adjNode = (Node *)first(list);
+
       popFront(list);
       push(S, adjNode);
       // void push(Stack* s, void* data);
     }
     // e) Libere la memoria usada por el nodo.
-    free(list);
+    clean(list);
     free(nodo);
     // Si terminó de recorre el grafo sin encontrar una solución, retorne NULL.
   }
