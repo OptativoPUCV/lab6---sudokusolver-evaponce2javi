@@ -43,7 +43,6 @@ void print_node(Node *n) {
 }
 
 int is_valid(Node *n) {
-  // por indexacion
   int fila[9][10] = {0};
   int columna[9][10] = {0};
   int submatriz[9][10] = {0};
@@ -95,23 +94,7 @@ List *get_adj_nodes(Node *n) {
   return list;
 }
 
-/*
-Explicacion del profesor:
-int k=4,p;
-for(p=0;p<9;p++){
-    int i=3*(k/3) + (p/3) ;
-    int j=3*(k%3) + (p%3) ;
-    printf("%d ",nodo->sudo[i][j]);
-    if(p%3 == 2) printf("\n");
-}
-*/
-
 int is_final(Node *n) {
-  /*
-  4.Implemente la función int is_final(Node * n). Esta función retorna 1 si el
-  nodo corresponde a un nodo final (es decir, todos los valores de la matriz son
-  distintos a 0) y 0 en caso contrario.
-  */
   for (int i = 0; i < 9; i++) {
     for (int k = 0; k < 9; k++) {
       if (n->sudo[i][k] == 0)
@@ -127,37 +110,21 @@ Node *DFS(Node *initial, int *cont) {
 
   while (!is_empty(S)) {
     (*cont)++;
-    // a) Saque y elimine el primer nodo de S.
     Node *nodo = top(S);
     pop(S);
-    // void pop(Stack* s);
-
-    // b) Verifique si corresponde a un estado final, si es así retorne el nodo.
     if (is_final(nodo)) {
-      // free(S);
       return nodo;
     }
-
-    // c) Obtenga la lista de nodos adyacentes al nodo.
     List *list = get_adj_nodes(nodo);
-
-    /*if (list != NULL){
-      free(nodo);
-    }*/
-
-    // d) Agregue los nodos de la lista (uno por uno) al stack S.
     Node *adjNode;
     while (!is_empty(list)) {
       adjNode = (Node *)first(list);
 
       popFront(list);
       push(S, adjNode);
-      // void push(Stack* s, void* data);
     }
-    // e) Libere la memoria usada por el nodo.
     clean(list);
     free(nodo);
-    // Si terminó de recorre el grafo sin encontrar una solución, retorne NULL.
   }
   return NULL;
 }
