@@ -121,7 +121,50 @@ int is_final(Node *n) {
   return 1;
 }
 
-Node *DFS(Node *initial, int *cont) { return NULL; }
+Node *DFS(Node *initial, int *cont) {
+
+  // Cree un stack S (pila) e inserte el nodo.
+  Stack *S = createStack();
+
+  /*
+  Operaciones en list.c para stack:
+  Stack* createStack();
+  void pop(Stack* s);
+  void* top(Stack* s);
+  void push(Stack* s, void* data);
+  */
+  push(S, initial);
+
+  // Mientras el stack S no se encuentre vacío:
+  while (S != NULL) {
+    (*cont)++;
+    // a) Saque y elimine el primer nodo de S.
+    Node *nodo = first(S);
+    pop(S);
+    // void pop(Stack* s);
+
+    // b) Verifique si corresponde a un estado final, si es así retorne el nodo.
+    if (is_final(nodo)) {
+      return nodo;
+    }
+    // c) Obtenga la lista de nodos adyacentes al nodo.
+    List *list = get_adj_nodes(nodo);
+
+    // d) Agregue los nodos de la lista (uno por uno) al stack S.
+    Node *adjNode;
+    while (list != NULL) {
+      adjNode = first(list);
+      popFront(list);
+      push(S, adjNode);
+      // void push(Stack* s, void* data);
+    }
+    // e) Libere la memoria usada por el nodo.
+    free(list);
+    free(nodo);
+    // Si terminó de recorre el grafo sin encontrar una solución, retorne NULL.
+  }
+  return NULL;
+}
 
 /*
 int main( int argc, char *argv[] ){
