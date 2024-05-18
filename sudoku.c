@@ -71,7 +71,7 @@ int is_valid(Node *n) {
 
 List *get_adj_nodes(Node *n) {
   List *list = createList();
-  int vacio = 0; // si encontramos, 0 vacia 1 que no
+  int vacio = 0; // si encontramos o no
   for (int i = 0; i < 9 && !vacio; i++) {
     for (int k = 0; k < 9 && !vacio; k++) { // Recorridoo
       if (n->sudo[i][k] == 0) {             // hallamos vacia
@@ -95,7 +95,31 @@ List *get_adj_nodes(Node *n) {
   return list;
 }
 
-int is_final(Node *n) { return 0; }
+/*
+Explicacion del profesor:
+int k=4,p;
+for(p=0;p<9;p++){
+    int i=3*(k/3) + (p/3) ;
+    int j=3*(k%3) + (p%3) ;
+    printf("%d ",nodo->sudo[i][j]);
+    if(p%3 == 2) printf("\n");
+}
+*/
+
+int is_final(Node *n) {
+  /*
+  4.Implemente la función int is_final(Node * n). Esta función retorna 1 si el
+  nodo corresponde a un nodo final (es decir, todos los valores de la matriz son
+  distintos a 0) y 0 en caso contrario.
+  */
+  for (int i = 0; i < 9; i++) {
+    for (int k = 0; k < 9; k++) {
+      if (n->sudo[i][k] == 0)
+        return 0;
+    }
+  }
+  return 1;
+}
 
 Node *DFS(Node *initial, int *cont) { return NULL; }
 
