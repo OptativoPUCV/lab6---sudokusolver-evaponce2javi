@@ -136,7 +136,7 @@ Node *DFS(Node *initial, int *cont) {
   push(S, initial);
 
   // Mientras el stack S no se encuentre vacío:
-  while (S != NULL) {
+  while (!is_empty(S)) {
     (*cont)++;
     // a) Saque y elimine el primer nodo de S.
     Node *nodo = first(S);
